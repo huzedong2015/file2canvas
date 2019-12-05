@@ -1,0 +1,31 @@
+{
+    /* vs code */
+    "editor.formatOnSave": false,               /* 保存自动格式化 */
+    "editor.formatOnType": false,               /* 换行后自动格式化 */
+
+    /* eslint */
+    "eslint.autoFixOnSave": true,               /* 保存时自动修复 */
+    "eslint.validate": [                        /* 需要验证文件 */
+        "javascript",
+        {
+            "language": "vue",
+            "autoFix": true
+        }
+    ],
+
+    /* Vetur */
+    "vetur.completion.autoImport": false,       /* 自动导入 */
+    "vetur.format.options.tabSize": 4,          /* tab大小 */
+    "vetur.format.options.useTabs": true,       /* 使用tab缩进 */
+    "vetur.format.defaultFormatterOptions": {   /* 默认格式化选项 */
+        "js-beautify-html": {
+            "wrap_attributes": "force-expand-multiline"
+        },
+        "prettyhtml": {
+            "printWidth": 100,
+            "singleQuote": false,
+            "wrapAttributes": false,
+            "sortAttributes": false
+        }
+    }
+}
