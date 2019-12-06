@@ -1,11 +1,11 @@
-// import EXIF from "exif-js";
+import EXIF from "exif-js";
 
 /**
  * 判断文件是否合法
  * @param {File} file 文件
  * @param {Number} maxSize 文件大小
  */
-const checkFile = (file, maxSize = 0) => {
+const checkFile = (file, maxSize) => {
 	let errorMsg = "";
 
 	// 文件存在同时为
@@ -50,31 +50,82 @@ const file2image = (file) => new Promise((reslove) => {
 
 
 /**
+ * 获取输出尺寸
+ * @param {Image} image 图片
+ * @param {width} width 输出尺寸
+ */
+const getOutSize = (image, width) => {
+	// 输出宽度
+	let outputWidth = width > 0 ? width : image.naturalWidth;
+	// 输出高度
+	let outputHeight = Math.floor(width * (image.naturalHeight / image.naturalWidth));
+	// 图片旋转角度
+	let orientation = 0;
+
+	// 只有IOS才需要处理选问题
+	if (/(iphone|ipad)/i.test(navigator.appVersion)) {
+		// 读取图片旋转角度
+		EXIF.getData(image, () => {
+			orientation = EXIF.getTag(image, "Orientation") || 1;
+		});
+
+		switch (orientation) {
+			// 逆时针旋转90度
+			case 6:
+				[outputWidth, outputHeight] = [outputHeight, outputWidth];
+				orientation = 90;
+				break;
+
+			default:
+				orientation = 0;
+		}
+	}
+
+	return {
+		outputWidth,
+		outputHeight,
+		orientation,
+	};
+};
+
+
+/**
  * 创建canvas
  * @param {Number} width canvs宽度
  * @param {Number} height canvs高度
  * @param {Image} image 图片
+ * @param {Number} orientation 图片旋转角度
  */
-const createCanvas = (width, height, image) => {
+const createCanvas = (width, height, image, orientation) => {
 	const canvas = document.createElement("canvas");
 	const ctx = canvas.getContext("2d");
 
 	canvas.width = width;
 	canvas.height = height;
 
-	ctx.drawImage(image, width, height);
+	switch (orientation) {
+		case 6:
+			ctx.translate(width / 2, height / 2);
+			ctx.rotate(orientation * (Math.PI / 180));
+			ctx.drawImage(image, -height / 2, -width / 2, height, width);
+			break;
+
+		default:
+			ctx.drawImage(image, 0, 0, width, height);
+	}
+
 
 	return canvas;
 };
 
 
 /**
- * 图片选择预览
+ * 图片压缩
  * @param {File} file 文件
  * @param {Number} maxSize 文件大小上限
  * @param {Number} width 导出canvas尺寸
  */
-const imageCompress = (file, maxSize, width) => new Promise((reslove, reject) => {
+const imageCompress = (file, maxSize = 0, width = 0) => new Promise((reslove, reject) => {
 	// 检测文件
 	const errorMsg = checkFile(file, maxSize);
 
@@ -87,15 +138,8 @@ const imageCompress = (file, maxSize, width) => new Promise((reslove, reject) =>
 	// 图片转base64
 	file2image(file)
 		.then((image) => {
-			// 读取图片旋转角度
-			// let orientation = null;
-
-			// EXIF.getData(this, () => {
-			// 	orientation = EXIF.getTag(this, "Orientation");
-			// });
-
-			const height = Math.floor(width * (image.naturalHeight / image.naturalWidth));
-			const canvas = createCanvas(width, height, image);
+			const { outputWidth, outputHeight, orientation } = getOutSize(image, width);
+			const canvas = createCanvas(outputWidth, outputHeight, image, orientation);
 
 			reslove(canvas);
 		});

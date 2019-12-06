@@ -1,4 +1,10 @@
 {
+    /* file exclude */
+    "files.exclude": {
+        ".sass-cache": true,
+        "node_modules": true
+    },
+
     /* vs code */
     "editor.formatOnSave": false,               /* 保存自动格式化 */
     "editor.formatOnType": false,               /* 换行后自动格式化 */

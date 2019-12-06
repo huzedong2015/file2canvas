@@ -9,8 +9,11 @@ module.exports = {
 		"eslint-config-airbnb-base",
 	],
 	rules: {
+		"no-console": process.env.NODE_ENV === "production" ? "error" : "off",
+		"no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
+		
 		// 空格缩进
-		"indent": ["error", "tab"],
+		"indent": ["error", "tab", { "SwitchCase": 1 }],
 
 		// 不使用tab
 		"no-tabs": "off",
