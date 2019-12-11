@@ -63,23 +63,34 @@ const getOutSize = (image, width) => {
 	let orientation = 0;
 
 	// 只有IOS才需要处理选问题
-	if (/(iphone|ipad)/i.test(navigator.appVersion)) {
-		// 读取图片旋转角度
-		EXIF.getData(image, () => {
-			orientation = EXIF.getTag(image, "Orientation") || 1;
-		});
+	// if (/(iphone|ipad)/i.test(navigator.appVersion)) {
+	// 读取图片旋转角度
+	EXIF.getData(image, () => {
+		orientation = EXIF.getTag(image, "Orientation") || 1;
+	});
 
-		switch (orientation) {
-			// 逆时针旋转90度
-			case 6:
-				[outputWidth, outputHeight] = [outputHeight, outputWidth];
-				orientation = 90;
-				break;
+	switch (orientation) {
+		// 顺时针旋转180度
+		case 3:
+			orientation = 180;
+			break;
 
-			default:
-				orientation = 0;
-		}
+		// 逆时针旋转90度
+		case 6:
+			[outputWidth, outputHeight] = [outputHeight, outputWidth];
+			orientation = 90;
+			break;
+
+		// 顺时针旋转90度
+		case 8:
+			[outputWidth, outputHeight] = [outputHeight, outputWidth];
+			orientation = -90;
+			break;
+
+		default:
+			orientation = 0;
 	}
+	// }
 
 	return {
 		outputWidth,
@@ -104,16 +115,22 @@ const createCanvas = (width, height, image, orientation) => {
 	canvas.height = height;
 
 	switch (orientation) {
-		case 6:
+		case 90:
+		case -90:
 			ctx.translate(width / 2, height / 2);
 			ctx.rotate(orientation * (Math.PI / 180));
 			ctx.drawImage(image, -height / 2, -width / 2, height, width);
 			break;
 
+		case 180:
+			ctx.translate(width / 2, height / 2);
+			ctx.rotate(orientation * (Math.PI / 180));
+			ctx.drawImage(image, -width / 2, -height / 2, width, height);
+			break;
+
 		default:
 			ctx.drawImage(image, 0, 0, width, height);
 	}
-
 
 	return canvas;
 };
