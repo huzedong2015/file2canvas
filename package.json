@@ -1,6 +1,6 @@
 {
-  "name": "image-compress",
-  "version": "1.0.0",
+  "name": "picture2canvas",
+  "version": "1.0.0-alpha1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -11,8 +11,8 @@
     "type": "git",
     "url": "git+https://github.com/huzedong2015/imageCompress.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["imageCompress", "image", "pictureCompress", "rotate"],
+  "author": "huzedong2019",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/huzedong2015/imageCompress/issues"

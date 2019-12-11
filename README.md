@@ -6,14 +6,14 @@
 `npm install image-compress`
 
 ## 使用
-`
+```
     import imageCompress from "image-compress";
 
     imageCompress(file, maxSize, width)
         .then((canvas) => {
             // coding
         });
-`
+```
 ## 参数
 ### file(必须)
     选择文件
