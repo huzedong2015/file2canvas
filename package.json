@@ -1,6 +1,6 @@
 {
   "name": "picture2canvas",
-  "version": "1.0.0-alpha2",
+  "version": "1.0.0-alpha3",
   "description": "",
   "main": "dist/picture2canvas.js",
   "scripts": {
