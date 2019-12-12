@@ -1,22 +1,21 @@
 # picture2canvas
 
+![npm](https://img.shields.io/npm/dm/picture2canvas)
+![GitHub file size in bytes](https://img.shields.io/github/size/huzedong2015/picture2canvas/dist/picture2canvas.js)
+![GitHub package.json version](https://img.shields.io/github/package-json/v/huzedong2015/picture2canvas)
+### Installing
+    $ npm install picture2canvas
 
-## Installing
-```
-npm install image-compress
-```
-
-## Browser compatibility
+### Browser compatibility
 The library should work fine on the following browsers (with Promise polyfill):
 
- - Google Chrome
+- Google Chrome
 - IE10 +
 - Safari 8+
 
-## Usage
-### Webpack
+### Usage
 ```javascript
-import picture2canvas from "image-compress";
+import picture2canvas from "picture2canvas";
 
 picture2canvas(file, maxSize, width)
     .then((canvas) => {
@@ -39,9 +38,9 @@ picture2canvas(file, maxSize, width)
         });
 </script>
 ```
-## Config
+### Config
 | Param | Type | Default | require | Description|
 | - | :- | :- | :- | :- |
-| file | File | `null` | true | input choose file |
+| file | File | `--` | true | input choose file |
 | maxSize | Number | `0` | false | file maxSize |
 | width | Number | `--` | false | output canvas width |
