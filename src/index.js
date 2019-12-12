@@ -58,7 +58,7 @@ const getOutSize = (image, width) => {
 	// 输出宽度
 	let outputWidth = width > 0 ? width : image.naturalWidth;
 	// 输出高度
-	let outputHeight = Math.floor(width * (image.naturalHeight / image.naturalWidth));
+	let outputHeight = Math.floor(outputWidth * (image.naturalHeight / image.naturalWidth));
 	// 图片旋转角度
 	let orientation = 0;
 
@@ -156,7 +156,8 @@ const picture2canvas = (file, maxSize = 0, width = 0) => new Promise((reslove, r
 			const canvas = createCanvas(outputWidth, outputHeight, image, orientation);
 
 			reslove(canvas);
-		});
+		})
+		.catch(reject);
 });
 
 
