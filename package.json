@@ -2,26 +2,35 @@
   "name": "picture2canvas",
   "version": "1.0.0-alpha1",
   "description": "",
-  "main": "index.js",
+  "main": "dist/picture2canvas.js",
   "scripts": {
-    "dev": "webpack-dev-server --mode=development --hot",
+    "serve": "webpack-dev-server --mode=development --hot",
     "build": "cross-env NODE_ENV=production webpack --mode=production --progress"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/huzedong2015/imageCompress.git"
+    "url": "git+https://github.com/huzedong2015/pictue2canvas.git"
   },
-  "keywords": ["imageCompress", "image", "pictureCompress", "rotate"],
+  "keywords": [
+    "pictue2canvas",
+    "image",
+    "pictureCompress",
+    "rotate"
+  ],
   "author": "huzedong2019",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/huzedong2015/imageCompress/issues"
+    "url": "https://github.com/huzedong2015/pictue2canvas/issues"
   },
-  "homepage": "https://github.com/huzedong2015/imageCompress#readme",
+  "homepage": "https://github.com/huzedong2015/pictue2canvas#readme",
   "dependencies": {
-    "exif-js": "^2.3.0"
+    "core-js": "^3.4.8"
   },
   "devDependencies": {
+    "@babel/core": "^7.7.5",
+    "@babel/preset-env": "^7.7.6",
+    "babel-loader": "^8.0.6",
+    "cross-env": "^6.0.3",
     "eslint": "^6.7.2",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",

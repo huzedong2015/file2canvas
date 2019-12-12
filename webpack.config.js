@@ -1,8 +1,11 @@
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const packageJson = require("./package.json");
 
 module.exports = {
-	entry: "./src/index.js",
+	output: {
+		filename: `${packageJson.name}.js`,
+	},
 
 	devServer: {
 		port: "8080",

@@ -4,6 +4,7 @@ module.exports = {
 		node: true,
 		es6: true,
 		browser: true,
+		amd: true,
 	},
 	extends: [
 		"eslint-config-airbnb-base",
