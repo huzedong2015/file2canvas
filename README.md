@@ -1,13 +1,24 @@
+# picture2canvas
+
+
 ## Installing
 ```
 npm install image-compress
 ```
 
-## Usage
-```
-import imageCompress from "image-compress";
+## Browser compatibility
+The library should work fine on the following browsers (with Promise polyfill):
 
-imageCompress(file, maxSize, width)
+ - Google Chrome
+- IE10 +
+- Safari 8+
+
+## Usage
+### Webpack
+```javascript
+import picture2canvas from "image-compress";
+
+picture2canvas(file, maxSize, width)
     .then((canvas) => {
         // code
     })
@@ -15,9 +26,22 @@ imageCompress(file, maxSize, width)
         // code
     });
 ```
+### Browser
+```html
+<script src="dist/picture2canvas.js"></script>
+<script>
+    picture2canvas(file, maxSize, width)
+        .then((canvas) => {
+            // code
+        })
+        .catch((error) => {
+            // code
+        });
+</script>
+```
 ## Config
-Param | Type | Default | require | Description
-- | :- | :- | :- | :-
-file | File | `null` | true | input choose files[0]
-maxSize | Number | `0` | false | file maxSize
-width | Number | `--` | false | output canvas width
+| Param | Type | Default | require | Description|
+| - | :- | :- | :- | :- |
+| file | File | `null` | true | input choose file |
+| maxSize | Number | `0` | false | file maxSize |
+| width | Number | `--` | false | output canvas width |
