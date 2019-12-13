@@ -1,11 +1,12 @@
 {
   "name": "picture2canvas",
-  "version": "1.0.0-alpha3",
+  "version": "1.0.0-alpha4",
   "description": "",
   "main": "dist/picture2canvas.js",
   "scripts": {
-    "serve": "webpack-dev-server --mode=development --hot",
-    "build": "cross-env NODE_ENV=production webpack --mode=production --progress"
+    "serve": "webpack-dev-server --config build/webpack.config.dev.js",
+    "build": "webpack --progress --config build/webpack.config.prod.js",
+    "build:ana": "webpack --progress --config build/webpack.config.analyzer.js"
   },
   "repository": {
     "type": "git",
@@ -24,7 +25,8 @@
   },
   "homepage": "https://github.com/huzedong2015/pictue2canvas#readme",
   "dependencies": {
-    "core-js": "^3.4.8"
+    "core-js": "^3.4.8",
+    "exif-js": "^2.3.0"
   },
   "devDependencies": {
     "@babel/core": "^7.7.5",
@@ -33,9 +35,11 @@
     "cross-env": "^6.0.3",
     "eslint": "^6.7.2",
     "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-loader": "^3.0.3",
     "eslint-plugin-import": "^2.18.2",
     "html-webpack-plugin": "^3.2.0",
     "webpack": "^4.41.2",
+    "webpack-bundle-analyzer": "^3.6.0",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0"
   }

@@ -1,4 +1,4 @@
-import EXIF from "./exif";
+import EXIF from "exif-js";
 
 /**
  * 判断文件是否合法

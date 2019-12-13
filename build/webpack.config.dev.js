@@ -1,14 +1,13 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-const packageJson = require("./package.json");
+const webpackConfigCommon = require("./webpack.config.common");
 
 module.exports = {
-	output: {
-		filename: `${packageJson.name}.js`,
-	},
+	mode: "development",
 
 	devServer: {
 		port: "8080",
 		host: "0.0.0.0",
+		hot: true,
 	},
 
 	plugins: [
@@ -16,5 +15,5 @@ module.exports = {
 		new HtmlWebpackPlugin({ template: "./public/index.html" }),
 	],
 
-	stats: "errors-only",
+	...webpackConfigCommon,
 };
