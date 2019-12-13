@@ -1,8 +1,7 @@
 # picture2canvas
 
-![npm](https://img.shields.io/npm/dm/picture2canvas)
+![npm](https://img.shields.io/npm/dt/picture2canvas)
 ![GitHub file size in bytes](https://img.shields.io/github/size/huzedong2015/picture2canvas/dist/picture2canvas.js)
-![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/huzedong2015/picture2canvas/core-js)
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/huzedong2015/picture2canvas)
 ### Installing
     $ npm install picture2canvas
