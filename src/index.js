@@ -29,7 +29,7 @@ const checkFile = (file, maxSize) => {
 
 
 /**
- * 图片转换成base64
+ * 文件转换成图片
  * @param {File} file 文件
  */
 const file2image = (file) => new Promise((reslove) => {
