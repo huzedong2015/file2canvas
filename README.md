@@ -3,6 +3,9 @@
 ![npm](https://img.shields.io/npm/dt/picture2canvas)
 ![GitHub file size in bytes](https://img.shields.io/github/size/huzedong2015/picture2canvas/dist/picture2canvas.js)
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/huzedong2015/picture2canvas)
+
+> Later, I will try to write an EXIF JS that only gets the angle
+
 ### Installing
     $ npm install picture2canvas
 
