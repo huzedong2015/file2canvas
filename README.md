@@ -32,7 +32,7 @@ picture2canvas(file, maxSize, width)
 ```html
 <script src="dist/picture2canvas.js"></script>
 <script>
-    picture2canvas(file, maxSize, width)
+    picture2canvas(file, options)
         .then((canvas) => {
             // code
         })
@@ -41,9 +41,9 @@ picture2canvas(file, maxSize, width)
         });
 </script>
 ```
-### Config
+### options
 | Param | Type | Default | require | Description|
 | - | :- | :- | :- | :- |
-| file | File | `--` | true | input choose file |
 | maxSize | Number | `0` | false | file maxSize |
 | width | Number | `--` | false | output canvas width |
+| background | String | `transparent` | false | canvas background |
