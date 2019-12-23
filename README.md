@@ -20,7 +20,7 @@ The library should work fine on the following browsers (with Promise polyfill):
 ```javascript
 import picture2canvas from "picture2canvas";
 
-picture2canvas(file, maxSize, width)
+picture2canvas(file, options)
     .then((canvas) => {
         // code
     })
@@ -41,7 +41,11 @@ picture2canvas(file, maxSize, width)
         });
 </script>
 ```
-### options
+### params
+#### file 
+input choose file
+
+#### options 
 | Param | Type | Default | require | Description|
 | - | :- | :- | :- | :- |
 | maxSize | Number | `0` | false | file maxSize |
