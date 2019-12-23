@@ -104,12 +104,18 @@ const getOutSize = (image, width) => {
  * @param {Image} image 图片
  * @param {Number} orientation 图片旋转角度
  */
-const createCanvas = (width, height, image, orientation) => {
+const createCanvas = ({
+	width, height, image, orientation, background,
+}) => {
 	const canvas = document.createElement("canvas");
 	const ctx = canvas.getContext("2d");
 
 	canvas.width = width;
 	canvas.height = height;
+
+	// 设置背景颜色
+	ctx.fillStyle = background;
+	ctx.fillRect(0, 0, width, height);
 
 	switch (orientation) {
 		case 90:
@@ -139,7 +145,14 @@ const createCanvas = (width, height, image, orientation) => {
  * @param {Number} maxSize 文件大小上限
  * @param {Number} width 导出canvas尺寸
  */
-const picture2canvas = (file, maxSize = 0, width = 0) => new Promise((reslove, reject) => {
+const picture2canvas = (
+	file,
+	{
+		width = 0,
+		maxSize = 0,
+		background = "transparent",
+	} = {},
+) => new Promise((reslove, reject) => {
 	// 检测文件
 	const errorMsg = checkFile(file, maxSize);
 
@@ -153,7 +166,13 @@ const picture2canvas = (file, maxSize = 0, width = 0) => new Promise((reslove, r
 	file2image(file)
 		.then((image) => {
 			const { outputWidth, outputHeight, orientation } = getOutSize(image, width);
-			const canvas = createCanvas(outputWidth, outputHeight, image, orientation);
+			const canvas = createCanvas({
+				width: outputWidth,
+				height: outputHeight,
+				image,
+				orientation,
+				background,
+			});
 
 			reslove(canvas);
 		})

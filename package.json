@@ -1,6 +1,6 @@
 {
   "name": "picture2canvas",
-  "version": "1.0.0-alpha4",
+  "version": "1.0.0-alpha5",
   "description": "Fix image upload rotation and compress image",
   "main": "dist/picture2canvas.js",
   "scripts": {

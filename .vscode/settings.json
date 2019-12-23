@@ -10,14 +10,9 @@
     "editor.formatOnType": false,               /* 换行后自动格式化 */
 
     /* eslint */
-    "eslint.autoFixOnSave": true,               /* 保存时自动修复 */
-    "eslint.validate": [                        /* 需要验证文件 */
-        "javascript",
-        {
-            "language": "vue",
-            "autoFix": true
-        }
-    ],
+    "editor.codeActionsOnSave": {
+        "source.fixAll": true
+    },
 
     /* Vetur */
     "vetur.completion.autoImport": false,       /* 自动导入 */
