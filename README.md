@@ -6,17 +6,17 @@
 
 > Later, I will try to write an EXIF JS that only gets the angle
 
-### Installing
+## Installing
     $ npm install picture2canvas
 
-### Browser compatibility
+## Browser compatibility
 The library should work fine on the following browsers (with Promise polyfill):
 
 - Google Chrome
 - IE10 +
 - Safari 8+
 
-### Usage
+## Usage
 ```javascript
 import picture2canvas from "picture2canvas";
 
@@ -28,7 +28,7 @@ picture2canvas(file, options)
         // code
     });
 ```
-### Browser
+## Browser
 ```html
 <script src="dist/picture2canvas.js"></script>
 <script>
@@ -41,11 +41,11 @@ picture2canvas(file, options)
         });
 </script>
 ```
-### params
-#### file 
+## params
+### file 
 input choose file
 
-#### options 
+### options 
 | Param | Type | Default | require | Description|
 | - | :- | :- | :- | :- |
 | maxSize | Number | `0` | false | file maxSize |
