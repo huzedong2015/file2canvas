@@ -6,25 +6,19 @@ import EXIF from "exif-js";
  * @param {Number} maxSize 文件大小
  */
 const checkFile = (file, maxSize) => {
-	let errorMsg = "";
+	// 100: "File does not exist or format is wrong",
+	// 101: "The file size exceeds the specified size",
+
+	let errorType = "";
 
 	// 文件存在同时为
 	if (!(file && file instanceof File)) {
-		errorMsg = "文件不存在或格式错误";
+		errorType = 100;
 	} else if (maxSize > 0 && file.size > maxSize) {
-		let maxSizeStr = "";
-
-		// 小于1M
-		if (maxSize < 1024 * 1024) {
-			maxSizeStr = `${(maxSize / 1024).toFixed(2)}KB`;
-		} else {
-			maxSizeStr = `${(maxSize / 1024 / 1024).toFixed()}MB`;
-		}
-
-		errorMsg = `文件不能超过${maxSizeStr}`;
+		errorType = 101;
 	}
 
-	return errorMsg;
+	return errorType;
 };
 
 
@@ -33,19 +27,12 @@ const checkFile = (file, maxSize) => {
  * @param {File} file 文件
  */
 const file2image = (file) => new Promise((reslove) => {
-	const fr = new FileReader();
+	const url = URL.createObjectURL(file);
+	const image = new Image();
 
-	fr.onload = (e) => {
-		const image = new Image();
+	image.src = url;
 
-		image.onload = () => {
-			reslove(image);
-		};
-
-		image.src = e.target.result;
-	};
-
-	fr.readAsDataURL(file);
+	reslove(image);
 });
 
 
@@ -154,11 +141,11 @@ const picture2canvas = (
 	} = {},
 ) => new Promise((reslove, reject) => {
 	// 检测文件
-	const errorMsg = checkFile(file, maxSize);
+	const errorType = checkFile(file, maxSize);
 
 	// 如果有错误
-	if (errorMsg) {
-		reject(new Error(errorMsg));
+	if (errorType) {
+		reject(errorType);
 		return;
 	}
 
