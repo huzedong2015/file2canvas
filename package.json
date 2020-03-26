@@ -6,7 +6,7 @@
   "scripts": {
     "serve": "webpack-dev-server --config build/webpack.config.dev.js",
     "build": "webpack --progress --config build/webpack.config.prod.js",
-    "build:ana": "webpack --progress --config build/webpack.config.analyzer.js"
+    "publish": "npm publish --registry http://registry.npmjs.org"
   },
   "repository": {
     "type": "git",
