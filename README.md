@@ -24,7 +24,7 @@ picture2canvas(file, options)
     .then((canvas) => {
         // code
     })
-    .catch((error) => {
+    .catch((errorType) => {
         // code
     });
 ```
@@ -36,12 +36,12 @@ picture2canvas(file, options)
         .then((canvas) => {
             // code
         })
-        .catch((error) => {
+        .catch((errorType) => {
             // code
         });
 </script>
 ```
-## params
+## Params
 ### file 
 input choose file
 
@@ -51,3 +51,10 @@ input choose file
 | maxSize | Number | `0` | false | file maxSize |
 | width | Number | `--` | false | output canvas width |
 | background | String | `transparent` | false | canvas background |
+
+### ErrorType 
+| code | des  |
+| - | :- |
+| 100 | File does not exist or format is wrong |
+| 101 | The file size exceeds the specified size |
+
