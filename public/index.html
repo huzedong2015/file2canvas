@@ -10,14 +10,14 @@
     <input id="file" type="file" accept="image/*">
     <script>
         document.getElementById("file").addEventListener("change", function() {
-            picture2canvas(this.files[0], { maxSize: 100 })
+            picture2canvas(this.files[0], { maxSize: 0, maxWidth: 1000 })
             .then((canvas) => {
                 document.body.appendChild(canvas);
             })
             .catch((errorType) => {
                 // 100: "File does not exist or format is wrong",
 	            // 101: "The file size exceeds the specified size",
-                console.log(errorType);
+                console.error(errorType);
             })
         });
     </script>

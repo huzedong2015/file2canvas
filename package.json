@@ -1,6 +1,6 @@
 {
   "name": "picture2canvas",
-  "version": "1.0.0-alpha7",
+  "version": "1.0.0-alpha8",
   "description": "Fix image upload rotation and compress image",
   "main": "dist/picture2canvas.js",
   "scripts": {
@@ -25,8 +25,7 @@
   },
   "homepage": "https://github.com/huzedong2015/pictue2canvas#readme",
   "dependencies": {
-    "core-js": "^3.6.4",
-    "exif-js": "^2.3.0"
+    "core-js": "^3.6.4"
   },
   "devDependencies": {
     "@babel/core": "^7.9.0",
