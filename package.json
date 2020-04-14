@@ -6,6 +6,7 @@
   "scripts": {
     "serve": "webpack-dev-server --config build/webpack.config.dev.js",
     "build": "webpack --progress --config build/webpack.config.prod.js",
+    "eslint": "eslint src/index.ts",
     "publish": "npm publish --registry http://registry.npmjs.org"
   },
   "repository": {
@@ -18,25 +19,25 @@
     "pictureCompress",
     "rotate"
   ],
-  "author": "huzedong2019",
+  "author": "huzedong",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/huzedong2015/pictue2canvas/issues"
   },
   "homepage": "https://github.com/huzedong2015/pictue2canvas#readme",
-  "dependencies": {
-    "core-js": "^3.6.4"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.9.0",
-    "@babel/preset-env": "^7.9.0",
+    "@babel/preset-typescript": "^7.9.0",
+    "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "@typescript-eslint/parser": "^2.27.0",
     "babel-loader": "^8.1.0",
     "cross-env": "^7.0.2",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
-    "eslint-loader": "^3.0.3",
-    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-import": "^2.20.2",
     "html-webpack-plugin": "^4.0.1",
+    "typescript": "^3.8.3",
     "webpack": "^4.42.1",
     "webpack-bundle-analyzer": "^3.6.1",
     "webpack-cli": "^3.3.11",

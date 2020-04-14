@@ -4,29 +4,12 @@
         ".sass-cache": true,
         "node_modules": true
     },
-
     /* vs code */
-    "editor.formatOnSave": false,               /* 保存自动格式化 */
-    "editor.formatOnType": false,               /* 换行后自动格式化 */
-
-    /* eslint */
-    "editor.codeActionsOnSave": {
+    "editor.formatOnSave": true, /* 保存自动格式化 */
+    "editor.formatOnType": false, /* 换行后自动格式化 */
+    "editor.codeActionsOnSave": { /* 保存后自动修复 */
         "source.fixAll": true
     },
-
-    /* Vetur */
-    "vetur.completion.autoImport": false,       /* 自动导入 */
-    "vetur.format.options.tabSize": 4,          /* tab大小 */
-    "vetur.format.options.useTabs": true,       /* 使用tab缩进 */
-    "vetur.format.defaultFormatterOptions": {   /* 默认格式化选项 */
-        "js-beautify-html": {
-            "wrap_attributes": "force-expand-multiline"
-        },
-        "prettyhtml": {
-            "printWidth": 100,
-            "singleQuote": false,
-            "wrapAttributes": false,
-            "sortAttributes": false
-        }
-    }
+    /* eslint */
+    "eslint.format.enable": false /* eslint格式化 */
 }

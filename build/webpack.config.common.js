@@ -1,12 +1,21 @@
 module.exports = {
+
 	module: {
 		rules: [
 			{
-				test: /\.js$/,
-				use: ["babel-loader", "eslint-loader"],
+				test: /\.ts$/,
+				use: ["babel-loader"],
 			},
 		],
 	},
 
 	stats: "errors-only",
+
+	resolve: {
+		extensions: [".js", ".ts", ".json"],
+	},
+
+	optimization: {
+		minimize: false,
+	},
 };

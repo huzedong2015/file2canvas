@@ -1,18 +1,27 @@
 module.exports = {
-	root: true,
 	env: {
-		node: true,
-		es6: true,
 		browser: true,
-		amd: true,
+		es6: true,
 	},
 	extends: [
-		"eslint-config-airbnb-base",
+		"airbnb-base",
+	],
+	globals: {
+		Atomics: "readonly",
+		SharedArrayBuffer: "readonly",
+	},
+	parser: "@typescript-eslint/parser",
+	parserOptions: {
+		ecmaVersion: 2020,
+		sourceType: "module",
+	},
+	plugins: [
+		"@typescript-eslint",
 	],
 	rules: {
 		"no-console": process.env.NODE_ENV === "production" ? "error" : "off",
 		"no-debugger": process.env.NODE_ENV === "production" ? "error" : "off",
-		
+
 		// 空格缩进
 		"indent": ["error", "tab", { "SwitchCase": 1 }],
 
@@ -34,10 +43,10 @@ module.exports = {
 		// for in 循环使用if 
 		"guard-for-in": "off",
 
-		// 最大行长度
-		"max-len": "off",
-
 		// 不使用new
-		"no-new": "off"
-	}
+		"no-new": "off",
+
+		// 最大长度
+		"max-len": "off"
+	},
 };
