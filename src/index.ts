@@ -7,7 +7,7 @@ function checkFile(file: File, maxSize?: number): number {
 	// 100: "File does not exist or format is wrong",
 	// 101: "The file size exceeds the specified size",
 
-	let errorType:number = null;
+	let errorType: number = null;
 
 	// 文件存在同时为
 	if (!(file && file instanceof File)) {
@@ -27,11 +27,11 @@ function getOrientation(buffer: ArrayBuffer): number {
 	const dataView = new DataView(buffer);
 
 	// 位置
-	let index:number = 0;
+	let index: number = 0;
 	// 方向
-	let result:number = 1;
+	let result: number = 1;
 	// 长度
-	let dataViewLength:number = dataView.byteLength;
+	let dataViewLength: number = dataView.byteLength;
 
 	// 检测是否为有效JPEG
 	if (buffer.byteLength < 2 || dataView.getUint16(index) !== 0xFFD8) {
@@ -94,22 +94,27 @@ interface getOutSizeParamsReturn {
 }
 
 function getOutSizeParams(
-	file:File,
+	file: File,
 	image: HTMLImageElement,
 	width: number,
 ): Promise<getOutSizeParamsReturn> {
 	return new Promise((reslove) => {
 		// 输出宽度
-		let outputWidth:number = width > 0 ? width : image.naturalWidth;
+		let outputWidth: number = width > 0 ? width : image.naturalWidth;
 		// 输出高度
-		let outputHeight:number = Math.floor(outputWidth * (image.naturalHeight / image.naturalWidth));
+		let outputHeight: number = Math.floor(outputWidth * (image.naturalHeight / image.naturalWidth));
 		// 图片旋转角度
-		let angle:number = 0;
+		let angle: number = 0;
 
 		const fr = new FileReader();
 
 		fr.onload = (e) => {
-			const orientation = getOrientation(e.target.result);
+			const arrayBuffer = e.target.result;
+			let orientation: number = 1;
+
+			if (arrayBuffer instanceof ArrayBuffer) {
+				orientation = getOrientation(arrayBuffer);
+			}
 
 			switch (orientation) {
 				// 顺时针旋转180度
@@ -117,13 +122,13 @@ function getOutSizeParams(
 					angle = 180;
 					break;
 
-					// 逆时针旋转90度
+				// 逆时针旋转90度
 				case 6:
 					[outputWidth, outputHeight] = [outputHeight, outputWidth];
 					angle = 90;
 					break;
 
-					// 顺时针旋转90度
+				// 顺时针旋转90度
 				case 8:
 					[outputWidth, outputHeight] = [outputHeight, outputWidth];
 					angle = -90;
@@ -207,9 +212,9 @@ const createCanvas = (
  * @param file 文件
  */
 interface file2canvasInterface {
-    // 宽度
-    width?: number,
-    // 文件大小上限
+	// 宽度
+	width?: number,
+	// 文件大小上限
 	maxSize?: number,
 	// 背景
 	background: string,
@@ -224,14 +229,14 @@ function file2canvas(
 	}: file2canvasInterface,
 ): Promise<number | HTMLCanvasElement> {
 	return new Promise((reslove, reject) => {
-		const errorType:number = checkFile(file, maxSize);
+		const errorType: number = checkFile(file, maxSize);
 
 		// 如果文件非法
 		if (errorType) {
 			reject(errorType);
 		}
 
-		let image:HTMLImageElement = null;
+		let image: HTMLImageElement = null;
 
 		// 二进制数据转Image
 		file2Image(file)
@@ -257,7 +262,7 @@ function file2canvas(
 
 
 // 外部接口
-const win:any = window;
+const win: any = window;
 
 win.file2canvas = file2canvas;
 
