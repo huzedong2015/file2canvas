@@ -1,0 +1,36 @@
+{
+  "name": "picture2canvas",
+  "version": "1.0.0-alpha8",
+  "description": "Fix image upload rotation and compress image",
+  "main": "dist/picture2canvas.js",
+  "scripts": {
+    "build": "rollup -c",
+    "publish": "npm publish --registry http://registry.npmjs.org"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/huzedong2015/pictue2canvas.git"
+  },
+  "keywords": [
+    "pictue2canvas",
+    "image",
+    "pictureCompress",
+    "rotate"
+  ],
+  "author": "huzedong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/huzedong2015/pictue2canvas/issues"
+  },
+  "homepage": "https://github.com/huzedong2015/pictue2canvas#readme",
+  "dependencies": {},
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^4.1.1",
+    "@typescript-eslint/eslint-plugin": "^2.27.0",
+    "@typescript-eslint/parser": "^2.27.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-plugin-import": "^2.20.2",
+    "typescript": "^3.8.3"
+  }
+}

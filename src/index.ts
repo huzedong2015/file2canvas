@@ -6,13 +6,15 @@
 function checkFile(file: File, maxSize?: number): number {
 	// 100: "File does not exist or format is wrong",
 	// 101: "The file size exceeds the specified size",
-
-	let errorType: number = null;
+	let errorType: number = 0;
 
 	// 文件存在同时为
 	if (!(file && file instanceof File)) {
 		errorType = 100;
-	} else if (typeof maxSize === "number" && maxSize > 0 && file.size > maxSize) {
+	} else if (
+		typeof maxSize === "number"
+		&& maxSize > 0
+		&& file.size > maxSize) {
 		errorType = 101;
 	}
 
@@ -69,12 +71,14 @@ function getOrientation(buffer: ArrayBuffer): number {
  * @param file 文件
  */
 function file2Image(file: File): Promise<HTMLImageElement> {
-	return new Promise((reslove, reject) => {
+	return new Promise((reslove) => {
 		const url = URL.createObjectURL(file);
 		const image = new Image();
 
-		image.onload = reslove.bind(null, image);
-		image.onerror = reject.bind(null);
+		image.onload = () => {
+			URL.revokeObjectURL(url);
+			reslove(image);
+		};
 
 		image.src = url;
 	});
@@ -109,11 +113,11 @@ function getOutSizeParams(
 		const fr = new FileReader();
 
 		fr.onload = (e) => {
-			const arrayBuffer = e.target.result;
+			const { target } = e;
 			let orientation: number = 1;
 
-			if (arrayBuffer instanceof ArrayBuffer) {
-				orientation = getOrientation(arrayBuffer);
+			if (target && target.result instanceof ArrayBuffer) {
+				orientation = getOrientation(target.result);
 			}
 
 			switch (orientation) {
@@ -172,11 +176,11 @@ const createCanvas = (
 		height,
 		image,
 		angle,
-		background,
+		background = "",
 	}: createCanvasInterface,
 ) => {
-	const canvas = document.createElement("canvas");
-	const ctx = canvas.getContext("2d");
+	const canvas:HTMLCanvasElement = document.createElement("canvas");
+	const ctx = <CanvasRenderingContext2D>canvas.getContext("2d");
 
 	canvas.width = width;
 	canvas.height = height;
@@ -236,7 +240,7 @@ function file2canvas(
 			reject(errorType);
 		}
 
-		let image: HTMLImageElement = null;
+		let image: HTMLImageElement = new Image();
 
 		// 二进制数据转Image
 		file2Image(file)
@@ -259,7 +263,6 @@ function file2canvas(
 			.catch(reject);
 	});
 }
-
 
 // 外部接口
 const win: any = window;
