@@ -4,6 +4,7 @@
 ![GitHub file size in bytes](https://img.shields.io/github/size/huzedong2015/file2canvas/dist/file2canvas.js)
 ![GitHub package.json version](https://img.shields.io/github/package-json/v/huzedong2015/file2canvas)
 
+Image compression, correct image rotation angle.
 
 ## Installing
 $ npm install file2canvas
