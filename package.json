@@ -1,18 +1,18 @@
 {
-  "name": "picture2canvas",
-  "version": "1.0.0-alpha8",
+  "name": "file2canvas",
+  "version": "1.0.0-alpha9",
   "description": "Fix image upload rotation and compress image",
-  "main": "dist/picture2canvas.js",
+  "main": "dist/file2canvas.js",
   "scripts": {
     "build": "rollup -c",
     "publish": "npm publish --registry http://registry.npmjs.org"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/huzedong2015/pictue2canvas.git"
+    "url": "git+https://github.com/huzedong2015/file2canvas.git"
   },
   "keywords": [
-    "pictue2canvas",
+    "file2canvas",
     "image",
     "pictureCompress",
     "rotate"
@@ -20,9 +20,9 @@
   "author": "huzedong",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/huzedong2015/pictue2canvas/issues"
+    "url": "https://github.com/huzedong2015/file2canvas/issues"
   },
-  "homepage": "https://github.com/huzedong2015/pictue2canvas#readme",
+  "homepage": "https://github.com/huzedong2015/file2canvas#readme",
   "dependencies": {},
   "devDependencies": {
     "@rollup/plugin-typescript": "^4.1.1",

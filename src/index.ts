@@ -264,9 +264,4 @@ function file2canvas(
 	});
 }
 
-// 外部接口
-const win: any = window;
-
-win.file2canvas = file2canvas;
-
 export default file2canvas;
