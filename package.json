@@ -5,7 +5,8 @@
   "main": "dist/file2canvas.js",
   "scripts": {
     "build": "rollup -c",
-    "publish": "npm publish --registry http://registry.npmjs.org"
+    "login": "npm login --registry http://registry.npmjs.org",
+    "publish": "npm publish --access public --registry http://registry.npmjs.org"
   },
   "repository": {
     "type": "git",
