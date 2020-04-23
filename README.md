@@ -12,6 +12,8 @@ $ npm install file2canvas
 
 ## Usage
 ```javascript
+import file2canvas from "file2canvas";
+
 file2canvas(file, options)
     .then((canvas) => {
         // code

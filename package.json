@@ -1,12 +1,12 @@
 {
   "name": "file2canvas",
-  "version": "1.0.0-alpha10",
+  "version": "1.0.0-alpha11",
   "description": "Fix image upload rotation and compress image",
   "main": "dist/file2canvas.js",
   "scripts": {
     "build": "rollup -c",
     "login": "npm login --registry http://registry.npmjs.org",
-    "publish": "npm publish --access public --registry http://registry.npmjs.org"
+    "publish": "npm publish . --access public --registry http://registry.npmjs.org"
   },
   "repository": {
     "type": "git",
