@@ -1,6 +1,6 @@
 {
   "name": "file2canvas",
-  "version": "1.0.0-alpha11",
+  "version": "1.0.0-beta.2",
   "description": "Fix image upload rotation and compress image",
   "main": "dist/file2canvas.js",
   "scripts": {
@@ -25,6 +25,9 @@
   },
   "homepage": "https://github.com/huzedong2015/file2canvas#readme",
   "dependencies": {},
+  "files": [
+    "dist"
+  ],
   "devDependencies": {
     "@rollup/plugin-typescript": "^4.1.1",
     "@typescript-eslint/eslint-plugin": "^2.27.0",
